@@ -2,7 +2,7 @@ package feverblog
 
 import java.io.File
 import java.text.SimpleDateFormat
-import java.util.Date
+import java.util.{Locale, Date}
 
 import feverblog.models.{Category, Post, RootCategory}
 import feverblog.pages.{CategoryPage, FeedPage, IndexPage, PostPage}
@@ -115,7 +115,7 @@ object Links {
 object Utils {
 
   def formatAsRssDate(date: Date): String = {
-    new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss zzz").format(date)
+    new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss zzz", Locale.US).format(date)
   }
 
   def allPosts(rootCategory: RootCategory): List[Post] = {

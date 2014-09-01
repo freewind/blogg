@@ -14,7 +14,7 @@ case class Post(id: String, title: String, content: String, alias: String, date:
 
   def dateAsPubDate: String = formatAsRssDate(date)
 
-  def dateOnly: String = new SimpleDateFormat("yyyy-MM-dd").format(new Date)
+  def dateOnly: String = new SimpleDateFormat("yyyy-MM-dd").format(date)
 
   def link: String = Links.postLink(this)
 }
