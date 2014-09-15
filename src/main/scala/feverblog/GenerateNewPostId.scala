@@ -7,7 +7,9 @@ object GenerateNewPostId {
   def apply(posts: List[Post]): Int = {
     val x = posts.map(_.id.toInt)
     if (x.toSet.size != x.size) {
-      throw new RuntimeException("there are duplicated ids")
+
+      val dupIds = x.filter(i => x.count(i == _) > 1)
+      throw new RuntimeException(s"there are duplicated ids： $dupIds, max: " + x.max)
     }
     x.max + 1
   }
