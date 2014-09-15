@@ -121,7 +121,7 @@ object Utils {
   def allPosts(rootCategory: RootCategory): List[Post] = {
     rootCategory.subCategories.foldLeft(rootCategory.articles) {
       case (as, c) => as ::: articlesOfCategory(c)
-    }
+    }.filterNot(_.alias == "???")
   }
 
   def timeDesc(a: Post, b: Post) = a.date.getTime > b.date.getTime
